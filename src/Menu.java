@@ -1,6 +1,14 @@
+import java.util.Scanner;
+
 public class Menu {
 
-    private static void returnDisplayMenu() {
+    private final Scanner scanner = new Scanner(System.in);
+
+    public String getResponse() {
+        return scanner.next();
+    }
+
+    public static void returnDisplayMenu() {
         System.out.printf(
                 "1. View contacts.%n" +
                 "2. Add a new contact.%n" +
@@ -11,8 +19,9 @@ public class Menu {
                 "Enter an option (1, 2, 3, 4 or 5):");
     }
 
-    private void runInteraction() {
+    public static void runInteraction() {
         returnDisplayMenu();
     }
+
 
 }
