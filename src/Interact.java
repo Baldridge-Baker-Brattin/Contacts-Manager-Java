@@ -1,7 +1,8 @@
 public interface Interact {
 
 //    getContacts();
-//    createContact();
+
+    void addNewContact();
 
 //    searchContacts();
 
