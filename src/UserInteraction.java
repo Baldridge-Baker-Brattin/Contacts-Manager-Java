@@ -2,34 +2,28 @@ import java.util.Scanner;
 
 public class UserInteraction {
 
-    private final Scanner scanner = new Scanner(System.in);
+    public static final Scanner scanner = new Scanner(System.in);
 
-    public int getResponse() {
+    public static int getResponse() {
         return scanner.nextInt();
     }
 
-
-    public String getUserInput() {
-
-        return scanner.nextLine();
-
+// list menu options
+    public static String returnDisplayMenu() {
+        return String.format("1. View contacts.%n" +
+                        "2. Add a new contact.%n" +
+                        "3. Search a contact by name.%n" +
+                        "4. Delete an existing contact.%n" +
+                        "5. Exit.%n");
     }
 
-//    public String getUserLastName() {
-//
-//        return scanner.next();
-//
-//    }
-//
-//    public String getUserPhoneNumber() {
-//
-//        return scanner.next();
-//
-//    }
-
-    public void getUserChoice() {
-
+    public static int promptUserChoice() {
         int userChoice = getResponse();
+        System.out.print("Enter an option (1, 2, 3, 4 or 5): ");
+        return userChoice;
+    }
+
+    public static void getUserChoice(int userChoice) {
 
         if (userChoice == 1) {
 
@@ -37,7 +31,8 @@ public class UserInteraction {
 
         } else if (userChoice == 2) {
 
-            // add contact
+            ContactsResourceManager crm = new ContactsResourceManager();
+            crm.addNewContact();
 
         } else if (userChoice == 3) {
 
@@ -49,12 +44,12 @@ public class UserInteraction {
 
         } else if (userChoice == 5) {
 
-
+            // exit loop
 
         } else {
-
-            getUserChoice();
+            getUserChoice(userChoice);
         }
+
 
     }
 

@@ -4,8 +4,7 @@ import java.util.*;
 
 public class ContactsResourceManager extends UserInteraction implements Interact {
 
-    private static Path p = Paths.get("src", "contacts.txt");
-
+    private static final Path p = Paths.get("src", "contacts.txt");
     private static List<String> contacts = new ArrayList<>();
 
 //    UserInteraction ui = new UserInteraction();
@@ -33,12 +32,10 @@ public class ContactsResourceManager extends UserInteraction implements Interact
     public void addNewContact() {
 
         System.out.println("Enter name ");
-        String userInput = getUserInput();
-
+        String userInput = scanner.nextLine();
 
         ArrayList<String> userContact = new ArrayList<>();
         userContact.add(userInput);
-
 
         try {
 
@@ -50,8 +47,6 @@ public class ContactsResourceManager extends UserInteraction implements Interact
         }
 
     }
-
-
 
 
 }
