@@ -1,21 +1,14 @@
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.nio.file.*;
+import java.util.*;
 
-public class ContactsResourceManager extends Contact {
+public class ContactsResourceManager extends UserInteraction implements Interact {
 
-    private static Path p = Paths.get("src","contacts.txt");
+    private static Path p = Paths.get("src", "contacts.txt");
 
     private static List<String> contacts = new ArrayList<>();
 
-    public ContactsResourceManager(String firstName, String lastName, String phoneNumber) {
-        super(firstName, lastName, phoneNumber);
-    }
+//    UserInteraction ui = new UserInteraction();
 
 
     public static void printAllContacts() {
@@ -39,23 +32,17 @@ public class ContactsResourceManager extends Contact {
 
     public void addNewContact() {
 
-        String firstName = super.getFirstName();
-        String lastName = super.getLastName();
-        String phoneNumber = super.getPhoneNumber();
-
-//        userContact Contact(firstName, lastName, phoneNumber);
+        System.out.println("Enter name ");
+        String userInput = getUserInput();
 
 
+        ArrayList<String> userContact = new ArrayList<>();
+        userContact.add(userInput);
 
-//    Contact userContact = new ArrayList<>(Arrays.asList(
-//            firstName,
-//            lastName,
-//            phoneNumber
-//    ));
 
         try {
 
-            Files.write(p, , StandardOpenOption.APPEND); // append new contact
+            Files.write(p, userContact, StandardOpenOption.APPEND); // append new contact
 
         } catch (IOException e) {
 
@@ -63,8 +50,6 @@ public class ContactsResourceManager extends Contact {
         }
 
     }
-
-
 
 
 

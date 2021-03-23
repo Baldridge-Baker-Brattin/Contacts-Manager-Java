@@ -3,11 +3,6 @@ import java.util.*;
 
 public class Menu {
 
-    private final Scanner scanner = new Scanner(System.in);
-
-    public int getResponse() {
-        return scanner.nextInt();
-    }
 
     public static void returnDisplayMenu() {
         System.out.printf(
@@ -24,36 +19,7 @@ public class Menu {
         returnDisplayMenu();
     }
 
-    public void getUserChoice() {
 
-        int userChoice = getResponse();
-
-        if (userChoice == 1) {
-
-            ContactsResourceManager.printAllContacts();
-
-        } else if (userChoice == 2) {
-
-            // add contact
-
-        } else if (userChoice == 3) {
-
-            // Search by name
-
-        } else if (userChoice == 4) {
-
-            // delete existing
-
-        } else if (userChoice == 5) {
-
-
-
-        } else {
-
-            getUserChoice();
-        }
-
-    }
 
 
 

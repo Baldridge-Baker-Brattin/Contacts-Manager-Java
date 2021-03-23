@@ -7,6 +7,10 @@ public class App {
 //        ContactsResourceManager.printContacts();
 
 
+        addNewContact();
+
+
+
     }
 
 }
