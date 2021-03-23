@@ -2,7 +2,7 @@ public interface Interact {
 
 //    getContacts();
 
-    void addNewContact();
+   void addNewContact();
 
 //    searchContacts();
 
