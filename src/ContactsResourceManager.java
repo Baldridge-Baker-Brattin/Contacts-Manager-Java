@@ -7,8 +7,6 @@ public class ContactsResourceManager extends UserInteraction implements Interact
     private static final Path p = Paths.get("src", "contacts.txt");
     private static List<String> contacts = new ArrayList<>();
 
-//    UserInteraction ui = new UserInteraction();
-
 
     public void getAllContacts() {
 
@@ -26,6 +24,9 @@ public class ContactsResourceManager extends UserInteraction implements Interact
     public void printAllContacts() {
 
         getAllContacts();
+
+        System.out.printf("Name  |  Phone number%n");
+        System.out.printf("------------------------%n");
 
         for (String contact : contacts) {
 
@@ -47,7 +48,7 @@ public class ContactsResourceManager extends UserInteraction implements Interact
         String userPhone = scanner.next();
 
         ArrayList<String> userContact = new ArrayList<>(Collections.singletonList(String.format(
-                "Name: %s %s | Phone #: %s",
+                "%s %s | %s",
                 userFirstName,
                 userLastName,
                 userPhone
@@ -56,7 +57,7 @@ public class ContactsResourceManager extends UserInteraction implements Interact
 
         try {
 
-            Files.write(p, userContact, StandardOpenOption.APPEND); // append new contact
+            Files.write(p, userContact, StandardOpenOption.APPEND);
 
         } catch (IOException e) {
 
@@ -110,6 +111,8 @@ public class ContactsResourceManager extends UserInteraction implements Interact
 
 
     }
+
+
 
 
 }
