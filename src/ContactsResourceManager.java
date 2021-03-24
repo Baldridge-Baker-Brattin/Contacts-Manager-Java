@@ -2,7 +2,7 @@ import java.io.IOException;
 import java.nio.file.*;
 import java.util.*;
 
-public class ContactsResourceManager extends UserInteraction implements Interact {
+public class ContactsResourceManager extends UserInteraction {
 
     private static final Path p = Paths.get("src", "contacts.txt");
     private static List<String> contacts = new ArrayList<>();
