@@ -10,7 +10,7 @@ public class ContactsResourceManager extends UserInteraction implements Interact
 //    UserInteraction ui = new UserInteraction();
 
 
-    public static void printAllContacts() {
+    public void getAllContacts() {
 
         try {
 
@@ -20,6 +20,12 @@ public class ContactsResourceManager extends UserInteraction implements Interact
 
             e.printStackTrace();
         }
+    }
+
+
+    public void printAllContacts() {
+
+        getAllContacts();
 
         for (String contact : contacts) {
 
@@ -31,11 +37,22 @@ public class ContactsResourceManager extends UserInteraction implements Interact
 
     public void addNewContact() {
 
-        System.out.println("Enter name ");
-        String userInput = scanner.nextLine();
+        System.out.println("Enter first name");
+        String userFirstName = scanner.next();
 
-        ArrayList<String> userContact = new ArrayList<>();
-        userContact.add(userInput);
+        System.out.println("Enter last name");
+        String userLastName = scanner.next();
+
+        System.out.println("Enter phone number");
+        String userPhone = scanner.next();
+
+        ArrayList<String> userContact = new ArrayList<>(Collections.singletonList(String.format(
+                "Name: %s %s | Phone #: %s",
+                userFirstName,
+                userLastName,
+                userPhone
+        )));
+
 
         try {
 
@@ -45,6 +62,52 @@ public class ContactsResourceManager extends UserInteraction implements Interact
 
             e.printStackTrace();
         }
+
+    }
+
+
+    public void searchContact() {
+
+        System.out.println("Enter search criteria: ");
+        String userInput = scanner.next();
+
+        getAllContacts();
+
+        for (String contact : contacts) {
+
+            if (contact.toLowerCase().contains(userInput.toLowerCase())) {
+                System.out.println(contact);
+            }
+
+        }
+    }
+
+
+    public void deleteContact() {
+
+        getAllContacts();
+
+        System.out.println("Enter entry to delete from entry list");
+        String userInput = scanner.next().toLowerCase();
+
+        try {
+            ArrayList<String> contactsCopy = new ArrayList<>();
+
+            for (String contact : contacts) {
+
+                if (!contact.toLowerCase().contains(userInput)) {
+                    contactsCopy.add(contact);
+                }
+
+            }
+            Files.write(p, contactsCopy);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        System.out.printf("%s deleted", userInput);
+
 
     }
 

@@ -8,53 +8,44 @@ public class UserInteraction {
         return scanner.nextInt();
     }
 
-// list menu options
+    // list menu options
     public static String returnDisplayMenu() {
-        return String.format("1. View contacts.%n" +
-                        "2. Add a new contact.%n" +
-                        "3. Search a contact by name.%n" +
-                        "4. Delete an existing contact.%n" +
-                        "5. Exit.%n");
+        return """
+                
+                1. View contacts.
+                2. Add a new contact.
+                3. Search a contact by name.
+                4. Delete an existing contact.
+                5. Exit.
+                
+                Enter an option (1, 2, 3, 4 or 5):
+                """;
     }
 
     public static int promptUserChoice() {
-        int userChoice = getResponse();
-        System.out.print("Enter an option (1, 2, 3, 4 or 5): ");
-        return userChoice;
+
+        return getResponse();
     }
 
-    public static void getUserChoice(int userChoice) {
+    public static boolean getUserChoice(int userChoice) {
 
-        if (userChoice == 1) {
+        ContactsResourceManager crm = new ContactsResourceManager();
 
-            ContactsResourceManager.printAllContacts();
+        boolean continueRunning = true;
 
-        } else if (userChoice == 2) {
+        switch (userChoice) {
 
-            ContactsResourceManager crm = new ContactsResourceManager();
-            crm.addNewContact();
+            case 1 -> crm.printAllContacts();
+            case 2 -> crm.addNewContact();
+            case 3 -> crm.searchContact();
+            case 4 -> crm.deleteContact();
+            case 5 -> continueRunning = false;
 
-        } else if (userChoice == 3) {
-
-            // Search by name
-
-        } else if (userChoice == 4) {
-
-            // delete existing
-
-        } else if (userChoice == 5) {
-
-            // exit loop
-
-        } else {
-            getUserChoice(userChoice);
         }
 
+        return continueRunning;
 
     }
-
-
-
 
 
 }
