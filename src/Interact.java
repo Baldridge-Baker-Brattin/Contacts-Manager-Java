@@ -1,11 +1,11 @@
 public interface Interact {
 
-//    getContacts();
+    void printAllContacts();
 
-   void addNewContact();
+    void addNewContact();
 
-//    searchContacts();
+    void searchContact();
 
-//    deleteContact();
+    void deleteContact();
 
 }

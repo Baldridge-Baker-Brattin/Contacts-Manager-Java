@@ -27,6 +27,7 @@ public class UserInteraction {
         return getResponse();
     }
 
+
     public static boolean getUserChoice(int userChoice) {
 
         ContactsResourceManager crm = new ContactsResourceManager();

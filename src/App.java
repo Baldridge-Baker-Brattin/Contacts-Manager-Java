@@ -3,14 +3,16 @@ public class App {
 
     public static void main(String[] args) {
 
-        System.out.println(UserInteraction.returnDisplayMenu());
-        int userResponse = UserInteraction.promptUserChoice();
-        UserInteraction.getUserChoice(userResponse);
+        boolean running = true;
 
-//        ContactsResourceManager.printContacts();
+        while (running) {
 
+            System.out.println(UserInteraction.returnDisplayMenu());
 
+            int userResponse = UserInteraction.promptUserChoice();
+            running = UserInteraction.getUserChoice(userResponse);
 
+        }
 
 
     }
